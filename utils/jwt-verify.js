@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const sessionModel = require('../schemas/session');
+const sessionModel = require('../schemas/Session');
 
 require('dotenv').config();
 

@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs');
 const userModel = require('./schemas/User');
 const appointmentSchema = require('./schemas/Appointment')
 const offHourModel = require('./schemas/OffHour');
-const sessionModel = require('./schemas/session');
+const sessionModel = require('./schemas/Session');
 
 const jwtSign = require('./utils/jwt-sign');
 const jwtVerify = require('./utils/jwt-verify');

@@ -1,4 +1,4 @@
-const sessionModel = require('../schemas/session');
+const sessionModel = require('../schemas/Session');
 
 const validateToken = async (req, res, next) => {
 
