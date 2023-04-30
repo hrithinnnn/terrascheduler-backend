@@ -20,6 +20,8 @@ const timeCompare = require('./utils/time-compare')
 
 require('dotenv').config();
 
+const PORT = process.env.PORT || 3000;
+
 // require('dotenv').config();
 
 const app = express();
@@ -664,4 +666,4 @@ app.post('/makeappointment/:guestEmail', jwtVerify, (req, res) => {
     });
 });
 
-app.listen(process.env.PORT, () => console.log(`TerraScheduler listening on port ${process.env.PORT}!`));
+app.listen(PORT, () => console.log(`TerraScheduler listening on port ${PORT}!`));
