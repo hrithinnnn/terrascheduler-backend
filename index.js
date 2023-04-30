@@ -257,7 +257,7 @@ app.post('/signup', (req, res) => {
                 if (err.code === 11000) errorString = "Email exists"
                 else errorString = err.code;
 
-                res.status(200).json({ status: 200, error: { errorString }, message: "Failure", data: {} });
+                res.status(400).json({ status: 400, error: { errorString }, message: "Failure", data: {} });
             });
             // console.log(hash);
         })
@@ -285,6 +285,14 @@ app.post('/login', (req, res) => {
     }
 
     userModel.findOne({ email: req.body.email }).then((doc) => {
+
+        console.log(doc);
+
+        if(!doc) {
+
+            res.status(400).json({ status: 400, error: { errorString: "User does not exist" }, message: "Failure", data: {} });
+            return;
+        }
 
         const sucess = bcrypt.compareSync(req.body.password, doc.password);
         if (sucess) {
@@ -336,6 +344,12 @@ app.post('/changepassword', (req, res) => {
     }
 
     userModel.findOne({ email: req.body.email }).then((doc) => {
+
+        if(!doc) {
+
+            res.status(400).json({ status: 400, error: { errorString: "User does not exist" }, message: "Failure", data: {} });
+            return;
+        }
 
         const sucess = bcrypt.compareSync(req.body.oldPassword, doc.password);
         if (sucess) {
