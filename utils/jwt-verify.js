@@ -1,0 +1,24 @@
+const jwt = require('jsonwebtoken');
+const sessionModel = require('../schemas/session');
+
+require('dotenv').config();
+
+async function decodeToken(req, res, next) {
+
+    const token = req.headers.authorization; 
+
+    // let doc = await sessionModel.findOne({token});
+
+    // if(!doc) return null;
+
+    // if(doc.isLoggedOut) return null;
+
+    return jwt.verify(token, process.env.JWT_SECRET_KEY, (err, vt) => {
+
+        console.log(vt);
+        req.headers['vt'] = vt;
+        next();
+    });
+}
+
+module.exports = decodeToken;
