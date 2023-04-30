@@ -2,7 +2,9 @@ const sessionModel = require('../schemas/Session');
 
 const validateToken = async (req, res, next) => {
 
-    const ignoreValidation = req.headers['ignore-token'];
+    let ignoreValidation = req.headers['ignore-token'];
+
+    if(req.url === "/") ignoreValidation = true;
 
     if(ignoreValidation) {
 

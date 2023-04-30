@@ -65,6 +65,11 @@ app.use(jsonParser);
 
 app.use(tokenValidator);
 
+app.get('/', (req, res) => {
+
+    res.status(200).json({message: "Success"})
+})
+
 ///////////////////////////////////////////
 /////          GET REQUESTS           /////
 ///////////////////////////////////////////
